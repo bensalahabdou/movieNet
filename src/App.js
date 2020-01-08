@@ -1,26 +1,78 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ListMovie from './listMovie';
+import AddMovie from './addMovie';
+import FilterName from './filterName';
+
+const moviesToDisplay = [{
+  id: 'IO',
+  title: 'IO',
+  rating: 5,
+  image: 'http://fr.web.img5.acsta.net/f_png/c_215_290/o_logo-netflix-n.png_5_se/pictures/19/01/10/12/19/2357847.jpg',
+  year: 2019}
+
+, {
+    id: 'MERVEILLEUX',
+    title: 'MERVEILLEUX',
+    rating: 5,
+    image: 'https://img5.cdn.cinoche.com/images/b0f5d9877322585c3d101652c900c25f.jpg',
+    year: 2017
+    
 }
 
-export default App;
+, {
+     id: 'MONSIEUR',
+     title: 'MONSIEUR',
+     rating: 3,
+     image: 'http://diaphana.fr/wp-content/uploads/2018/11/monsieur_120x160_web-1-600x815.jpg',
+     year: 2018
+}]
+
+export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      
+      movies: moviesToDisplay,
+      newText: '',
+      visible: false
+    }
+    
+  }
+
+  addNewMovie = ({id, title, rating, image, year}) => {
+    this.setState({
+      movies: [...this.state.movies, {id, title, rating, image, year}]
+    });
+    
+  };
+  getVisibleMovies() {
+    return this.state.movies.filter(
+      el => el.title.toLowerCase().includes(
+          this.state.newText.toLowerCase().trim()
+        )
+      )
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className='header'>
+        <AddMovie  className="add" buttonLabel="+" addMovie={this.addNewMovie} />
+        <button onClick={()=>{this.setState({visible: ! this.state.visible})}} ><img src={'https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png'} width='30' height='30' /> </button>
+          {this.state.visible ? <FilterName 
+          value= {this.state.newText}
+          onChange={(newTextInput)=>{this.setState({
+            newText: newTextInput
+          })}}  
+          /> : <div></div>}
+        </div>
+       
+        
+        <ListMovie movies={this.getVisibleMovies()}/>
+        
+      </div>
+    )
+  }
+}
