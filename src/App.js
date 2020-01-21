@@ -41,15 +41,15 @@ export default class App extends Component {
     
   }
 
-  addNewMovie = ({id, title, rating, image, year}) => {
+  addNewMovie = ({...props}) => {
     this.setState({
-      movies: [...this.state.movies, {id, title, rating, image, year}]
+      movies: [...this.state.movies, {...props}]
     });
     
   };
   getVisibleMovies() {
     return this.state.movies.filter(
-      el => el.title.toLowerCase().includes(
+      el => el.title.toLowerCase().startsWith(
           this.state.newText.toLowerCase().trim()
         )
       )
