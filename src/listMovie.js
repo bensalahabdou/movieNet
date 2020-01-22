@@ -28,7 +28,7 @@ export default class ListMovie extends Component {
         return (
             
             <div className="map-card">
-               {movies.map( movie => <div key={movie.id}> <CardMovie rating={movie.rating} image={movie.image} title={movie.title} year={movie.year}/> </div> )} 
+               {movies.map( movie => <div key={movie.id}> <CardMovie movies={movie} /> </div> )} 
                
             </div>
         )

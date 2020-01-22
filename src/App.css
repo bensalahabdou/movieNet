@@ -1,5 +1,36 @@
 .header {
   display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.search {
+  display: flex;
+}
+
+.Modal-Structure {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 260;
+  height: 150px;
+  margin: 20px 0px;
+  
+}
+
+.modal {
+  width: fit-content;
+  margin: auto
+}
+
+.name-filter-text {
+  size: 20px;
+  font-size: 12px;
+  width: 200px;
+  height: 30px;
+  border-radius: 3px;
+  margin-left: 12px;
   
 }
 
@@ -12,6 +43,14 @@
 
 .card {
   border: 2px solid black;
+}
+
+.details {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
 }
 
 .rating {

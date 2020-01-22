@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import './App.css';
 
 import ListMovie from './listMovie';
@@ -60,7 +61,8 @@ export default class App extends Component {
       <div className="App">
         <div className='header'>
         <AddMovie  className="add" buttonLabel="+" addMovie={this.addNewMovie} />
-        <button onClick={()=>{this.setState({visible: ! this.state.visible})}} ><img src={'https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png'} width='30' height='30' /> </button>
+        <div className="search">        
+          <button onClick={()=>{this.setState({visible: ! this.state.visible})}} ><img src={'https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png'} width='30' height='30' alt=""/> </button>
           {this.state.visible ? <FilterName 
           value= {this.state.newText}
           onChange={(newTextInput)=>{this.setState({
@@ -68,11 +70,9 @@ export default class App extends Component {
           })}}  
           /> : <div></div>}
         </div>
-       
-        
-        <ListMovie movies={this.getVisibleMovies()}/>
-        
       </div>
+        <ListMovie movies={this.getVisibleMovies()}/>
+      </div>    
     )
   }
 }

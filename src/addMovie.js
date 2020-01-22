@@ -37,10 +37,10 @@ class ModalExample extends React.Component {
         <Modal
           isOpen={this.state.modal}
           toggle={this.toggle}
-          className={this.props.className}
+          className="modal"
         >
           <ModalHeader >veuillez ajouter les données du film</ModalHeader>
-          <ModalBody>
+          <ModalBody className="Modal-Structure">
             <input
               type="text"
               name="image"
@@ -72,14 +72,24 @@ class ModalExample extends React.Component {
             <Button
               color="primary"
               onClick={() => {
-                this.props.addMovie({
-                  id: this.state.title,  
-                  title: this.state.title,
-                  rating: this.state.rating,  
-                  image: this.state.image,
-                  year: this.state.year
-                });
-                this.toggle();
+                if(this.state.title.length !== 0 
+                  && this.state.rating>0 
+                  && this.state.image 
+                  && this.state.year.length>3
+                ){
+                  this.props.addMovie({
+                    id: this.state.title,  
+                    title: this.state.title,
+                    rating: this.state.rating,  
+                    image: this.state.image,
+                    year: this.state.year
+                  });
+                  this.toggle();
+                }
+                else {
+                  alert('Merci de remplir tous les champs')
+                }
+                
               }}
             >
               ADD

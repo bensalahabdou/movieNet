@@ -5,6 +5,7 @@ import React from 'react'
         <input
             className="name-filter-text"
             type="search"
+            placeholder="Entrez le nom du film"
             value={value}
             onChange={(event) => {
                 onChange(event.target.value)
