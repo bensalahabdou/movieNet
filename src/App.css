@@ -7,16 +7,24 @@
 
 .search {
   display: flex;
+  position: relative;
 }
 
 .Modal-Structure {
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   flex-direction: column;
   width: 260;
-  height: 150px;
-  margin: 20px 0px;
+  height: 200px;
+  margin-bottom: 10px;
   
+}
+
+input {
+  border: 1px solid #a2b9bc;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding-left: 5px;
 }
 
 .modal {

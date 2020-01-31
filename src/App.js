@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Button } from "reactstrap";
 
 import './App.css';
 
 import ListMovie from './listMovie';
 import AddMovie from './addMovie';
 import FilterName from './filterName';
+import { withRouter } from 'react-router-dom';
 
 const moviesToDisplay = [{
   id: 'IO',
@@ -60,9 +62,9 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className='header'>
-        <AddMovie  className="add" buttonLabel="+" addMovie={this.addNewMovie} />
+        <AddMovie className="add" addMovie={this.addNewMovie} />
         <div className="search">        
-          <button onClick={()=>{this.setState({visible: ! this.state.visible})}} ><img src={'https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png'} width='30' height='30' alt=""/> </button>
+        <button type="button" class="btn btn-secondary" onClick={()=>{this.setState({visible: ! this.state.visible})}} ><img src={'https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png'} width='25' height='25' alt=""/> </button>
           {this.state.visible ? <FilterName 
           value= {this.state.newText}
           onChange={(newTextInput)=>{this.setState({

@@ -1,7 +1,7 @@
-import React from "react";
+import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-class ModalExample extends React.Component {
+class ModalExample extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,16 +31,18 @@ class ModalExample extends React.Component {
   render() {
     return (
       <div>
-        <Button className='Add' color="danger" onClick={this.toggle}>
-          {this.props.buttonLabel}
-        </Button>
+        <Button 
+        // className='Add' 
+        color="primary" 
+        onClick={this.toggle}>
+          AddMovie
+        </Button>{" "}
         <Modal
           isOpen={this.state.modal}
-          toggle={this.toggle}
-          className="modal"
+          // className="modal"
         >
           <ModalHeader >veuillez ajouter les données du film</ModalHeader>
-          <ModalBody className="Modal-Structure">
+          <ModalBody className="Modal-Structure">          
             <input
               type="text"
               name="image"
@@ -67,6 +69,7 @@ class ModalExample extends React.Component {
               min= {0}
               onChange={this.handleChange}
             />
+            
           </ModalBody>
           <ModalFooter>
             <Button
@@ -85,6 +88,11 @@ class ModalExample extends React.Component {
                     year: this.state.year
                   });
                   this.toggle();
+                  this.state.id = '';
+                  this.state.title='';
+                  this.state.image='';
+                  this.state.year='';
+                  this.state.rating= 0;
                 }
                 else {
                   alert('Merci de remplir tous les champs')
@@ -96,7 +104,7 @@ class ModalExample extends React.Component {
             </Button>{" "}
             <Button color="secondary" onClick={this.toggle}>
               Cancel
-            </Button>
+            </Button>{" "}
           </ModalFooter>
         </Modal>
       </div>
